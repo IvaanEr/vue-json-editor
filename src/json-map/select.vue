@@ -27,6 +27,7 @@
         computed: {
             css_input(){
                 return {width: `${this.width}px`}
+                //return {width: '600px'}
             },
             css_menu_group(){
                 return {

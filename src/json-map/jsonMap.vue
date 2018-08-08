@@ -83,7 +83,7 @@
             },
             label_width_max(){
                 this.reCompute;
-                let wids = [24];
+                let wids = [80];
                 this.operation_mode.options ?
                     Object.values(this.operation_mode.options).forEach(d => wids.push(measure_width(d))) :
                     Object.keys(this.data).forEach(d => wids.push(measure_width(d)));
@@ -91,9 +91,9 @@
             },
             value_width_max(){
                 this.reCompute;
-                let wids = [36];
+                let wids = [80];
                 Object.values(this.data).filter(d => !(d instanceof Object)).forEach(d => wids.push(measure_width(d)));
-                return Math.max(...wids);
+                return Math.max(...wids) ;
             },
             sub_component_width_max(){
                 this.reCompute
@@ -108,7 +108,7 @@
                         });
                     return Math.max(...wids);
                 } else {
-                    return 80
+                    return 100
                 }
             },
         },
@@ -162,7 +162,7 @@
                 this.$emit('change')
             },
             value_width(value){
-                return Math.max(measure_width(value), 36)
+                return Math.max(measure_width(value), 125)
             },
         },
         created()
@@ -189,8 +189,9 @@
     }
 </script>
 <style scoped>
+    /* width de caja azul de objeto*/
     div.content_style {
-        width: auto;
+        width: 100%; 
         padding: 5px 1px;
         display: block;
     }

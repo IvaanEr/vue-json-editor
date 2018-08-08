@@ -37,8 +37,8 @@
             <div :class="{input:true,input_ctl:false}" v-if="value instanceof Object">
                 <t-map :label="label" :instruct="instruct" :data="value" :edit_mode="edit_mode" :query_mode_function="query_mode_function" @change="onChange"></t-map>
             </div>
-            <div :class="{input:true,input_ctl:edit_mode}" v-else>
-                <input :style="style_value_width" type="text" :value="value" placeholder="value..." :disabled="!edit_mode" @input="valueChanged"/>
+            <div :class="{input:true,input_ctl:edit_mode,input_textarea:true}" v-else>
+                <textarea rows="2" type="text" :value="value" placeholder="value..." :disabled="!edit_mode" @input="valueChanged"/>
             </div>
             <div class="pull_right op_outer">
                 <div class="op"
@@ -57,8 +57,8 @@
             label: {type: [String, Number, Boolean], required: false, default: null},
             value: [String, Number, Boolean, Object, Array],
             instruct: {type: String, required: false, default: ''},
-            label_width: {type: Number, required: false, default: 6},
-            value_width: {type: Number, required: false, default: 36},
+            label_width: {type: Number, required: false, default: 150},
+            value_width: {type: Number, required: false, default: 150},
             edit_mode: {type: Boolean, required: false, default: false},
             mode: {type: String, required: true, default: 1},
             options: {
@@ -133,9 +133,12 @@
         computed: {
             style_label_width(){
                 return {width: `${this.label_width}px`}
+                //return {width: '175px'}
             },
             style_value_width(){
-                return {width: `${this.value_width}px`}
+                return {width: `${this.value_width}px`, maxWidth: '300px'}
+                //return {width: '175px'}
+
             },
         },
     }
@@ -146,6 +149,7 @@
         display: flex;
         margin: 2px 0;
         padding: 1px 1px;
+        width:100%;
         border: 1px solid transparent;
         border-radius: 9px;
         box-shadow: 0;
@@ -161,18 +165,26 @@
         border-radius: 9px;
     }
 
-    div.input_ctl:hover {
-        box-shadow: 0 0 10px 0 rgba(33, 150, 243, 0.8);
+    div.input.input_textarea {
+        width: 100%;
     }
 
-    input {
+    div.input.input_textarea>textarea {
+        width: 100%;
+    }
+
+    div.input_ctl:hover {
+       /* box-shadow: 0 0 10px 0 rgba(33, 150, 243, 0.8); */
+    }
+
+    input,textarea{
         font-size: 12px;
         padding: 0 10px;
         outline: none;
         border: 0px solid transparent;
         border-radius: 9px;
         background-color: transparent;
-        color: #2E7D32;
+        color: rgb(11, 46, 92);
         transition: width, background-color 0.15s linear;
     }
 
@@ -184,8 +196,7 @@
     }
 
     input:focus {
-        background-color: rgba(33, 150, 243, 0.5);
-        border-bottom:;
+        /* background-color: rgba(33, 150, 243, 0.5); */
     }
 
     div.semicolon {
@@ -201,7 +212,7 @@
     }
 
     div.op {
-        width: 10px;
+        width: 15px;
         height: 100%;
         border-radius: 5px;
         background-color: transparent;
@@ -213,7 +224,7 @@
     }
 
     input::-webkit-input-placeholder {
-        color: #A5D6A7;
+        color: rgb(60, 158, 63);
     }
 
     input:focus::-webkit-input-placeholder {

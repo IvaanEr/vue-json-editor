@@ -5,7 +5,7 @@
                :edit_mode="editable"
                :query_mode_function="query_mode_function"
                @change="onChange"
-               :style="{boxShadow: editable? '0 0 10px 0 green':''}"></t-map>
+               :style="{boxShadow: editable? '0 0 10px 0 white':''}"></t-map>
         <span id="sp" style="display: inline-block; visibility: hidden;position: absolute"></span>
     </div>
 </template>
