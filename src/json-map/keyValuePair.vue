@@ -212,7 +212,7 @@
     }
 
     div.op {
-        width: 15px;
+        width: 8px;
         height: 100%;
         border-radius: 5px;
         background-color: transparent;

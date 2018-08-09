@@ -83,7 +83,7 @@
             },
             label_width_max(){
                 this.reCompute;
-                let wids = [80];
+                let wids = [100];
                 this.operation_mode.options ?
                     Object.values(this.operation_mode.options).forEach(d => wids.push(measure_width(d))) :
                     Object.keys(this.data).forEach(d => wids.push(measure_width(d)));
